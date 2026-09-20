@@ -8,9 +8,11 @@
         WindowStartupLocation="CenterScreen">
 
     <Grid Background="#101318">
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="121*"/>
-            <ColumnDefinition Width="179*"/>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="45*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -22,7 +24,8 @@
         <Border Grid.Row="0"
                 Background="#171B22"
                 BorderBrush="#252B35"
-                BorderThickness="0,0,0,1" Grid.ColumnSpan="2">
+                BorderThickness="0,0,0,1" 
+                Grid.ColumnSpan="3">
 
             <Grid Margin="20,0">
 
@@ -58,18 +61,242 @@
 
         </Border>
 
-
         <!-- MAIN AREA -->
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="55*"/>
-                <ColumnDefinition Width="45*"/>
-            </Grid.ColumnDefinitions>
+                <!-- Character list -->
+                <ColumnDefinition Width="220"/>
 
+                <!-- 2D Character -->
+                <ColumnDefinition Width="35*"/>
+
+                <!-- Chat -->
+                <ColumnDefinition Width="45*"/>
+            
+            </Grid.ColumnDefinitions>
+            
+            <!-- CHARACTER LIST -->
+            <Border
+    Grid.Column="0"
+    Background="#12161D"
+    Margin="15"
+    CornerRadius="15">
+
+                <Grid Margin="12">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <!-- TITLE -->
+                    <TextBlock
+            Text="CHARACTERS"
+            Foreground="#7F8998"
+            FontSize="12"
+            FontWeight="SemiBold"
+            Margin="8,5,0,15"/>
+
+
+                    <!-- CHARACTER LIST -->
+                    <StackPanel Grid.Row="1">
+
+
+                        <!-- MIRA -->
+                        <Border
+    Background="#1E2530"
+    CornerRadius="12"
+    Padding="10"
+    Margin="0,0,0,8"
+    Tag="MIRA"
+    Cursor="Hand"
+    MouseLeftButtonUp="Character_Click">
+
+                            <Grid>
+
+                                <Ellipse
+                        Width="42"
+                        Height="42"
+                        HorizontalAlignment="Left">
+
+                                    <Ellipse.Fill>
+                                        <ImageBrush
+                                ImageSource="/CharImg/mira_profile.png"
+                                Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+
+                                </Ellipse>
+
+                                <StackPanel
+                        Margin="55,0,0,0"
+                        VerticalAlignment="Center">
+
+                                    <TextBlock
+    Text="MIRA"
+    Foreground="#E8ECF2"
+    FontSize="14"
+    FontWeight="SemiBold"/>
+
+                                    <TextBlock
+                            Text="Online"
+                            Foreground="#6EE7A8"
+                            FontSize="11"/>
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+
+
+                        <!-- NOVA -->
+                        <Border
+    Background="#1A2029"
+    CornerRadius="12"
+    Padding="10"
+    Margin="0,0,0,8"
+    Tag="NOVA"
+    Cursor="Hand"
+    MouseLeftButtonUp="Character_Click">
+
+                            <Grid>
+
+                                <Ellipse
+                        Width="42"
+                        Height="42"
+                        HorizontalAlignment="Left">
+
+                                    <Ellipse.Fill>
+                                        <ImageBrush
+                                ImageSource="/CharImg/mira_profile.png"
+                                Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+
+                                </Ellipse>
+
+                                <StackPanel
+                        Margin="55,0,0,0"
+                        VerticalAlignment="Center">
+
+                                    <TextBlock
+                            Text="NOVA"
+                            Foreground="White"
+                            FontSize="14"
+                            FontWeight="SemiBold"/>
+
+                                    <TextBlock
+                            Text="Online"
+                            Foreground="#6EE7A8"
+                            FontSize="11"/>
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+
+                        <!-- LUNA -->
+                        <Border
+Background="#1A2029"
+CornerRadius="12"
+Padding="10"
+Margin="0,0,0,8"
+Tag="LUNA"
+Cursor="Hand"
+MouseLeftButtonUp="Character_Click">
+
+                            <Grid>
+
+                                <Ellipse
+                    Width="42"
+                    Height="42"
+                    HorizontalAlignment="Left">
+
+                                    <Ellipse.Fill>
+                                        <ImageBrush
+                            ImageSource="/CharImg/mira_profile.png"
+                            Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+
+                                </Ellipse>
+
+                                <StackPanel
+                    Margin="55,0,0,0"
+                    VerticalAlignment="Center">
+
+                                    <TextBlock
+                        Text="LUNA"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="SemiBold"/>
+
+                                    <TextBlock
+                        Text="Online"
+                        Foreground="#6EE7A8"
+                        FontSize="11"/>
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+
+                        <!-- ARIA -->
+                        <Border
+Background="#1A2029"
+CornerRadius="12"
+Padding="10"
+Margin="0,0,0,8"
+Tag="ARIA"
+Cursor="Hand"
+MouseLeftButtonUp="Character_Click">
+
+                            <Grid>
+
+                                <Ellipse
+                    Width="42"
+                    Height="42"
+                    HorizontalAlignment="Left">
+
+                                    <Ellipse.Fill>
+                                        <ImageBrush
+                            ImageSource="/CharImg/mira_profile.png"
+                            Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+
+                                </Ellipse>
+
+                                <StackPanel
+                    Margin="55,0,0,0"
+                    VerticalAlignment="Center">
+
+                                    <TextBlock
+                        Text="ARIA"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="SemiBold"/>
+
+                                    <TextBlock
+                        Text="Online"
+                        Foreground="#6EE7A8"
+                        FontSize="11"/>
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
 
             <!-- CHARACTER PANEL -->
-            <Border Grid.Column="0"
+            <Border Grid.Column="1"
                     Background="#12161D"
                     Margin="15"
                     CornerRadius="15">
@@ -91,12 +318,14 @@
 
                     </Border>
 
-                    <TextBlock Text="MIRA"
-                               Foreground="White"
-                               FontSize="24"
-                               FontWeight="SemiBold"
-                               HorizontalAlignment="Center"
-                               Margin="0,15,0,0"/>
+                    <TextBlock
+    x:Name="CenterCharacterName"
+    Text="MIRA"
+    Foreground="White"
+    FontSize="24"
+    FontWeight="SemiBold"
+    HorizontalAlignment="Center"
+    Margin="0,15,0,0"/>
 
                     <TextBlock Text="Neutral"
                                Foreground="#7F8998"
@@ -108,9 +337,8 @@
 
             </Border>
 
-
             <!-- CHAT PANEL -->
-            <Border Grid.Column="1"
+            <Border Grid.Column="2"
                     Background="#171B22"
                     Margin="0,15,15,15"
                     CornerRadius="15">
@@ -123,79 +351,80 @@
                         <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
 
-
                     <!-- CHARACTER STATUS -->
-                    <Border Grid.Row="0"
-                            Background="#1D232D"
-                            CornerRadius="10"
-                            Padding="15">
 
-                        <StackPanel>
 
-                            <TextBlock Text="MIRA"
-                                       Foreground="White"
-                                       FontSize="16"
-                                       FontWeight="SemiBold"/>
+                    <Border
+    Background="#1E2530"
+    CornerRadius="15"
+    Padding="10"
+    Margin="0,0,0,0">
 
-                            <TextBlock Text="Online"
-                                       Foreground="#70C090"
-                                       FontSize="12"
-                                       Margin="0,3,0,0"/>
+                        <Grid>
 
-                        </StackPanel>
+                            <!-- Character profile image -->
+                            <Ellipse
+    Width="50"
+    Height="50"
+    HorizontalAlignment="Left"
+    VerticalAlignment="Center">
+
+                                <Ellipse.Fill>
+                                    <ImageBrush
+            ImageSource="/CharImg/mira_profile.png"
+            Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+
+                            </Ellipse>
+
+                            <!-- Character information -->
+                            <StackPanel
+    Margin="65,0,0,0"
+    VerticalAlignment="Center">
+
+                                <TextBlock
+        x:Name="ChatCharacterName"
+        Text="MIRA"
+        Foreground="#E8ECF2"
+        FontSize="17"
+        FontWeight="SemiBold"/>
+
+                            </StackPanel>
+
+                        </Grid>
 
                     </Border>
 
 
+
                     <!-- MESSAGES -->
-                    <ScrollViewer Grid.Row="1"
+                    <ScrollViewer x:Name="ChatScrollViewer"
+                                  Grid.Row="1"
                                   Margin="0,15,0,15"
                                   VerticalScrollBarVisibility="Auto">
 
-                        <StackPanel>
+                        <StackPanel x:Name="ChatMessages">
 
-                            <Border Background="#242A35"
-                                    CornerRadius="12"
-                                    Padding="14"
-                                    Margin="0,0,40,10">
+                            <!--<Border
+                                 Background="#252B36"
+                                  CornerRadius="12"
+                                  Padding="14,10"
+                                 Margin="0,0,40,10"
+                                  HorizontalAlignment="Left"
+                                  MaxWidth="500">
 
-                                <TextBlock Text="Hello! I'm Mira. How are you?"
-                                           Foreground="#E8ECF2"
-                                           FontSize="14"
-                                           TextWrapping="Wrap"/>
+                                <TextBlock
+        ="Hello! I'm Mira. How are you?"
+        Foreground="White"
+        FontSize="14"
+        TextWrapping="Wrap"/>
 
-                            </Border>
-
-                            <Border Background="#33445A"
-                                    CornerRadius="12"
-                                    Padding="14"
-                                    HorizontalAlignment="Right"
-                                    Margin="40,0,0,10">
-
-                                <TextBlock Text="Hello! I'm doing great."
-                                           Foreground="White"
-                                           FontSize="14"
-                                           TextWrapping="Wrap"/>
-
-                            </Border>
-
-                            <Border Background="#242A35"
-                                    CornerRadius="12"
-                                    Padding="14"
-                                    Margin="0,0,40,10">
-
-                                <TextBlock Text="That's nice to hear!"
-                                           Foreground="#E8ECF2"
-                                           FontSize="14"
-                                           TextWrapping="Wrap"/>
-
-                            </Border>
+                            </Border>-->
 
                         </StackPanel>
 
                     </ScrollViewer>
-
-
+                    
                     <!-- INPUT -->
                     <Border Grid.Row="2"
                             Background="#1D232D"
@@ -210,21 +439,86 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBox x:Name="MessageInput"
-                                     Text="Type a message..."
-                                     Background="Transparent"
-                                     Foreground="#AAB2BF"
-                                     BorderThickness="0"
-                                     FontSize="14"
-                                     VerticalContentAlignment="Center"
-                                     Padding="10"/>
+                                       Background="Transparent"
+                                       Foreground="#E8ECF2"
+                                       BorderThickness="0"
+                                       FontSize="14"
+                                       VerticalContentAlignment="Center"
+                                       Padding="10"
+                                       KeyDown="MessageInput_KeyDown"/>
 
-                            <Button Grid.Column="1"
-                                    Content="➤"
-                                    FontSize="20"
-                                    Background="#3B82F6"
-                                    Foreground="White"
-                                    BorderThickness="0"/>
+                            <Button x:Name="SendButton"
+        Grid.Column="1"
+        Width="45"
+        Height="45"
+        Content="➤"
+        FontSize="20"
+        Foreground="White"
+        Background="Transparent"
+        BorderThickness="0"
+        Padding="0"
+        Click="SendButton_Click">
 
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+
+                                        <Border x:Name="ButtonBorder"
+                    Width="45"
+                    Height="45"
+                    CornerRadius="12">
+
+                                            <Border.Background>
+                                                <SolidColorBrush x:Name="HoverBrush"
+                                     Color="Transparent"/>
+                                            </Border.Background>
+
+                                            <ContentPresenter
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+
+                                            <!-- MOUSE ENTER -->
+                                            <EventTrigger RoutedEvent="MouseEnter">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+
+                                                        <ColorAnimation
+                                Storyboard.TargetName="HoverBrush"
+                                Storyboard.TargetProperty="Color"
+                                From="Transparent"
+                                To="#555555"
+                                Duration="0:0:0.25"/>
+
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+
+
+                                            <!-- MOUSE LEAVE -->
+                                            <EventTrigger RoutedEvent="MouseLeave">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+
+                                                        <ColorAnimation
+                                Storyboard.TargetName="HoverBrush"
+                                Storyboard.TargetProperty="Color"
+                                From="#555555"
+                                To="Transparent"
+                                Duration="0:0:0.25"/>
+
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+
+                                        </ControlTemplate.Triggers>
+
+                                    </ControlTemplate>
+                                </Button.Template>
+
+                            </Button>
                         </Grid>
 
                     </Border>
