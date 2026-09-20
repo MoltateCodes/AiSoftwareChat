@@ -9,13 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="CharImg\byte_profile.png" />
     <None Remove="CharImg\mira_profile.png" />
+    <None Remove="CharImg\nix_profile.png" />
     <None Remove="CharImg\profile.png" />
+    <None Remove="CharImg\R-01_profile.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="CharImg\byte_profile.png" />
     <Resource Include="CharImg\mira_profile.png" />
+    <Resource Include="CharImg\nix_profile.png" />
     <Resource Include="CharImg\profile.png" />
+    <Resource Include="CharImg\R-01_profile.png" />
   </ItemGroup>
 
 </Project>
