@@ -306,9 +306,76 @@ namespace WpfApp1
                 {
                     AddAIMessage(chatMessage.Message);
                 }
+                else if (chatMessage.Sender == "Sticker")
+                {
+                    AddStickerMessage(chatMessage.Message);
+                }
             }
 
             ChatScrollViewer.ScrollToEnd();
+        }
+
+        private void StickerButton_Click(object sender, RoutedEventArgs e)
+        {
+            StickerPopup.IsOpen = !StickerPopup.IsOpen;
+        }
+
+        private async void Sticker_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string stickerPath)
+            {
+                if (CurrentCharacter == null)
+                    return;
+
+                // =========================
+                // SEND STICKER
+                // =========================
+
+                // Save sticker
+                CurrentCharacter.ChatHistory.Add(
+                    new ChatMessage("Sticker", stickerPath)
+                );
+
+                // Show sticker in chat
+                AddStickerMessage(stickerPath);
+
+                // Close sticker popup
+                StickerPopup.IsOpen = false;
+
+                // Scroll to sticker
+                ChatScrollViewer.ScrollToEnd();
+
+
+                // =========================
+                // AI RESPONSE
+                // =========================
+
+                // Small delay before AI responds
+                await Task.Delay(500);
+
+                // Show typing indicator
+                ShowTypingIndicator();
+
+                // Typing delay
+                await Task.Delay(1200);
+
+                // Hide typing indicator
+                await HideTypingIndicator();
+
+                // AI response
+                string aiResponse = "Haha, I see your sticker!";
+
+                // Save AI response
+                CurrentCharacter.ChatHistory.Add(
+                    new ChatMessage("AI", aiResponse)
+                );
+
+                // Display AI response
+                AddAIMessage(aiResponse);
+
+                // Scroll to AI response
+                ChatScrollViewer.ScrollToEnd();
+            }
         }
 
         private void MessageInput_KeyDown(
@@ -409,7 +476,7 @@ namespace WpfApp1
             // HIDE TYPING INDICATOR
             // --------------------------------
 
-            HideTypingIndicator();
+            await HideTypingIndicator();
 
 
             // --------------------------------
@@ -430,20 +497,97 @@ namespace WpfApp1
             // Scroll to latest message
             ChatScrollViewer.ScrollToEnd();
         }
+
         private void ShowTypingIndicator()
         {
             if (CurrentCharacter == null)
                 return;
 
             TypingCharacterName.Text = CurrentCharacter.Name;
+
+            // Make visible
             TypingIndicator.Visibility = Visibility.Visible;
+
+            // Starting position
+            TypingIndicator.Opacity = 0;
+            TypingIndicatorTransform.Y = -8;
+
+            // Slide up
+            DoubleAnimation slideAnimation = new DoubleAnimation
+            {
+                From = -8,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(220),
+                EasingFunction = new QuadraticEase
+                {
+                    EasingMode = EasingMode.EaseOut
+                }
+            };
+
+            // Fade in
+            DoubleAnimation fadeAnimation = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromMilliseconds(220),
+                EasingFunction = new QuadraticEase
+                {
+                    EasingMode = EasingMode.EaseOut
+                }
+            };
+
+            TypingIndicatorTransform.BeginAnimation(
+                TranslateTransform.YProperty,
+                slideAnimation);
+
+            TypingIndicator.BeginAnimation(
+                UIElement.OpacityProperty,
+                fadeAnimation);
 
             ChatScrollViewer.ScrollToEnd();
         }
 
-        private void HideTypingIndicator()
+        private async Task HideTypingIndicator()
         {
+            // Fade out
+            DoubleAnimation fadeAnimation = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(180),
+                EasingFunction = new QuadraticEase
+                {
+                    EasingMode = EasingMode.EaseIn
+                }
+            };
+
+            // Slide down slightly
+            DoubleAnimation slideAnimation = new DoubleAnimation
+            {
+                From = 0,
+                To = 5,
+                Duration = TimeSpan.FromMilliseconds(180),
+                EasingFunction = new QuadraticEase
+                {
+                    EasingMode = EasingMode.EaseIn
+                }
+            };
+
+            TypingIndicatorTransform.BeginAnimation(
+                TranslateTransform.YProperty,
+                slideAnimation);
+
+            TypingIndicator.BeginAnimation(
+                UIElement.OpacityProperty,
+                fadeAnimation);
+
+            // Wait for animation to finish
+            await Task.Delay(180);
+
             TypingIndicator.Visibility = Visibility.Collapsed;
+
+            // Reset position for next appearance
+            TypingIndicatorTransform.Y = 8;
         }
 
         private void AnimateMessage(UIElement element)
@@ -497,7 +641,7 @@ namespace WpfApp1
 
                 Padding = new Thickness(14, 10, 14, 10),
 
-                Margin = new Thickness(40, 0, 0, 10),
+                Margin = new Thickness(40, 0, 10, 10),
 
                 HorizontalAlignment = HorizontalAlignment.Right,
 
@@ -516,13 +660,83 @@ namespace WpfApp1
             ChatMessages.Children.Add(messageBubble);
             AnimateMessage(messageBubble);
         }
+
+        private void AddStickerMessage(string stickerPath)
+        {
+            Border stickerContainer = new Border
+            {
+                Background = Brushes.Transparent,
+                Margin = new Thickness(40, 5, 15, 12),
+                HorizontalAlignment = HorizontalAlignment.Right
+            };
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+
+            // Convert /Stickers/byte_fine.png → /WpfApp1;component/Stickers/byte_fine.png
+            string cleanPath = stickerPath.TrimStart('/');
+
+            bitmap.UriSource = new Uri(
+                $"pack://application:,,,/WpfApp1;component/{cleanPath}",
+                UriKind.Absolute
+            );
+
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.EndInit();
+
+            Image stickerImage = new Image
+            {
+                Source = bitmap,
+                Width = 180,
+                Height = 180,
+                Stretch = Stretch.Uniform,
+
+                SnapsToDevicePixels = true,
+                UseLayoutRounding = true
+            };
+
+            RenderOptions.SetBitmapScalingMode(
+                stickerImage,
+                BitmapScalingMode.HighQuality
+            );
+
+            stickerContainer.Child = stickerImage;
+
+            ChatMessages.Children.Add(stickerContainer);
+
+            AnimateMessage(stickerContainer);
+        }
         private void AddAIMessage(string message)
         {
+            Color bubbleColor;
+
+            switch (CurrentCharacter?.Name)
+            {
+                case "MIRA":
+                    bubbleColor = Color.FromRgb(255, 18, 125);
+                    break;
+
+                case "BYTE":
+                    bubbleColor = Color.FromRgb(73, 52, 33);
+                    break;
+
+                case "NIX":
+                    bubbleColor = Color.FromRgb(35, 45, 85);
+                    break;
+
+                case "R-01":
+                    bubbleColor = Color.FromRgb(45, 58, 65);
+                    break;
+
+                default:
+                    bubbleColor = Color.FromRgb(37, 43, 54);
+                    break;
+            }
+
             Border messageBubble = new Border
             {
-                Background = new SolidColorBrush(
-                    Color.FromRgb(37, 43, 54)
-                ),
+                Background = new SolidColorBrush(bubbleColor),
 
                 CornerRadius = new CornerRadius(12),
 
@@ -544,6 +758,7 @@ namespace WpfApp1
             };
 
             ChatMessages.Children.Add(messageBubble);
+
             AnimateMessage(messageBubble);
         }
     }

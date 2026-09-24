@@ -9,19 +9,66 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Stickers\byte_doomed.png" />
+    <None Remove="Stickers\byte_fine.png" />
+    <None Remove="Stickers\byte_judging.png" />
+    <None Remove="Stickers\byte_oh_shit.png" />
+    <None Remove="Stickers\byte_processing.png" />
+    <None Remove="Stickers\byte_seriously.png" />
+    <None Remove="Stickers\byte_tired.png" />
+    <None Remove="Stickers\byte_trust_me_bro.png" />
+    <None Remove="Stickers\byte_yes_boss.png" />
+    <None Remove="Stickers\mira_angry.png" />
+    <None Remove="Stickers\mira_confused.png" />
+    <None Remove="Stickers\mira_cry.png" />
+    <None Remove="Stickers\mira_DeadInside.png" />
+    <None Remove="Stickers\mira_excited.png" />
     <None Remove="CharImg\byte_profile.png" />
     <None Remove="CharImg\mira_profile.png" />
     <None Remove="CharImg\nix_profile.png" />
     <None Remove="CharImg\profile.png" />
     <None Remove="CharImg\R-01_profile.png" />
+    <None Remove="Stickers\mira_giggle.png" />
+    <None Remove="Stickers\mira_happy.png" />
+    <None Remove="Stickers\mira_love.png" />
+    <None Remove="Stickers\mira_PuppyEye.png" />
+    <None Remove="Stickers\mira_request.png" />
+    <None Remove="Stickers\mira_surprised.png" />
+    <None Remove="Stickers\mira_thankyou.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Stickers\mira_angry.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Stickers\byte_doomed.png" />
+    <Resource Include="Stickers\byte_fine.png" />
+    <Resource Include="Stickers\byte_judging.png" />
+    <Resource Include="Stickers\byte_processing.png" />
+    <Resource Include="Stickers\byte_seriously.png" />
+    <Resource Include="Stickers\byte_tired.png" />
+    <Resource Include="Stickers\byte_trust_me_bro.png" />
+    <Resource Include="Stickers\byte_yes_boss.png" />
+    <Resource Include="Stickers\mira_confused.png" />
+    <Resource Include="Stickers\mira_cry.png" />
+    <Resource Include="Stickers\mira_DeadInside.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Stickers\mira_excited.png" />
     <Resource Include="CharImg\byte_profile.png" />
     <Resource Include="CharImg\mira_profile.png" />
     <Resource Include="CharImg\nix_profile.png" />
     <Resource Include="CharImg\profile.png" />
     <Resource Include="CharImg\R-01_profile.png" />
+    <Resource Include="Stickers\mira_giggle.png" />
+    <Resource Include="Stickers\mira_happy.png" />
+    <Resource Include="Stickers\mira_love.png" />
+    <Resource Include="Stickers\mira_PuppyEye.png" />
+    <Resource Include="Stickers\mira_request.png" />
+    <Resource Include="Stickers\mira_surprised.png" />
+    <Resource Include="Stickers\mira_thankyou.png" />
   </ItemGroup>
 
 </Project>
