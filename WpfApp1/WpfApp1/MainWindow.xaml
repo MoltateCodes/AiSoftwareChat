@@ -1144,7 +1144,7 @@
                                      VerticalContentAlignment="Center"
                                      Padding="10"
                                      TextWrapping="Wrap"
-                                     AcceptsReturn="True"
+                                     AcceptsReturn="False"
                                      MaxHeight="55"
                                      VerticalScrollBarVisibility="Auto"
                                      TextChanged="MessageInput_TextChanged"
